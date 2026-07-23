@@ -1,7 +1,5 @@
 const std = @import("std");
-const rl = @cImport({
-    @cInclude("raylib.h");
-});
+const rl = @import("raylib_c.zig").raylib;
 const fb = @import("framebuffer.zig");
 const Point = fb.Point;
 
