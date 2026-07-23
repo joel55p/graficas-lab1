@@ -1,7 +1,5 @@
 const std = @import("std");
-const rl = @cImport({
-    @cInclude("raylib.h");
-});
+const rl = @import("raylib_c.zig").raylib;
 
 pub const Point = struct {
     x: i32,
