@@ -2,4 +2,5 @@
 zig-cache/
 zig-out/
 build/
+zig-pkg/
 *.o
