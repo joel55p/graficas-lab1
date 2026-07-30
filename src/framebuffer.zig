@@ -23,9 +23,7 @@ pub const Framebuffer = struct {
         };
     }
 
-    /// Pone un pixel usando coordenadas enteras. Ignora silenciosamente
-    /// coordenadas fuera del canvas (el relleno y las lineas de un poligono
-    /// facilmente generan valores fuera de rango al redondear).
+    /// Pone un pixel usando coordenadas enteras. Tambien ignora silenciosamente coordenadas fuera del canvas (el relleno y las lineas de un poligono facilmente generan valores fuera de rango al redondear).
     pub fn draw_pixel_i32(self: *Framebuffer, x: i32, y: i32, color: rl.Color) void {
         if (x < 0 or y < 0 or x >= self.width or y >= self.height) return;
         rl.ImageDrawPixel(&self.image, x, y, color);
@@ -58,8 +56,7 @@ pub const Framebuffer = struct {
         }
     }
 
-    /// Dibuja el contorno (orilla) de un poligono, conectando cada punto
-    /// con el siguiente y cerrando la figura (ultimo punto -> primer punto).
+    /// Dibuja el contorno (q es orilla) de un poligono, conectando cada punto  con el siguiente y cerrando la figura (ultimo punto ahora es  primer punto).
     pub fn draw_polygon_outline(self: *Framebuffer, points: []const Point, color: rl.Color) void {
         const n = points.len;
         if (n < 2) return;
@@ -71,12 +68,9 @@ pub const Framebuffer = struct {
         }
     }
 
-    /// Rellena uno o mas contornos con un scanline fill de regla par-impar
-    /// (even-odd rule). Al pasar mas de un contorno (poligono exterior +
+    /// Rellena uno o mas contornos con un scanline fill de regla par-impar (even-odd rule). Al pasar mas de un contorno (poligono exterior +
     /// poligono "agujero"), las zonas cubiertas por un numero par de
-    /// contornos quedan sin pintar: asi sale el agujero solo, sin logica
-    /// especial. Funciona con poligonos de cualquier cantidad de vertices,
-    /// concavos o convexos.
+    /// contornos que  quedan sin pintar: asi sale el agujero solo, ahora bien funciona con poligonos de cualquier cantidad de vertices
     pub fn fill_polygon_with_holes(self: *Framebuffer, contours: []const []const Point, color: rl.Color) void {
         var y_min: i32 = self.height - 1;
         var y_max: i32 = 0;
@@ -91,8 +85,7 @@ pub const Framebuffer = struct {
         if (y_min < 0) y_min = 0;
         if (y_max > self.height - 1) y_max = self.height - 1;
 
-        // 256 intersecciones alcanza de sobra (el poligono mas grande de
-        // este lab tiene 18 + 4 vertices).
+        // 256 intersecciones alcanza de sobra 
         var intersections: [256]i32 = undefined;
 
         var y = y_min;
@@ -140,8 +133,7 @@ pub const Framebuffer = struct {
         self.fill_polygon_with_holes(&[_][]const Point{points}, color);
     }
 
-    /// Exporta el framebuffer actual a un archivo (por ejemplo "out.bmp").
-    /// El formato lo determina la extension del nombre.
+    /// Exporta el framebuffer actual a un archivo (por ejemplo "out.bmp"). Y el formato lo determina la extension del nombre.
     pub fn export_image(self: *Framebuffer, path: [*c]const u8) void {
         _ = rl.ExportImage(self.image, path);
     }
@@ -162,9 +154,7 @@ pub const Framebuffer = struct {
     }
 };
 
-/// Insertion sort: suficiente para las pocas intersecciones por scanline
-/// que maneja este laboratorio, sin depender de una version especifica de
-/// std.sort.
+/// Insertion sort que es suficiente para las pocas intersecciones por scanline
 fn insertion_sort(arr: []i32) void {
     var i: usize = 1;
     while (i < arr.len) : (i += 1) {

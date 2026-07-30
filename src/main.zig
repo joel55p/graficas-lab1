@@ -3,7 +3,7 @@ const rl = @import("raylib_c.zig").raylib;
 const fb = @import("framebuffer.zig");
 const Point = fb.Point;
 
-// --- Poligono 1: amarillo, orilla blanca ---
+//  Poligono 1: amarillo, orilla blanca 
 const polygon1 = [_]Point{
     .{ .x = 165, .y = 380 },
     .{ .x = 185, .y = 360 },
@@ -17,7 +17,7 @@ const polygon1 = [_]Point{
     .{ .x = 193, .y = 383 },
 };
 
-// --- Poligono 2: azul, orilla blanca ---
+//  Poligono 2: azul, orilla blanca 
 const polygon2 = [_]Point{
     .{ .x = 321, .y = 335 },
     .{ .x = 288, .y = 286 },
@@ -25,14 +25,14 @@ const polygon2 = [_]Point{
     .{ .x = 374, .y = 302 },
 };
 
-// --- Poligono 3: rojo, orilla blanca ---
+//  Poligono 3: rojo, orilla blanca 
 const polygon3 = [_]Point{
     .{ .x = 377, .y = 249 },
     .{ .x = 411, .y = 197 },
     .{ .x = 436, .y = 249 },
 };
 
-// --- Poligono 4: verde, orilla blanca, con poligono 5 como agujero ---
+//  Poligono 4: verde, orilla blanca, con poligono 5 como agujero 
 const polygon4 = [_]Point{
     .{ .x = 413, .y = 177 },
     .{ .x = 448, .y = 159 },
@@ -54,7 +54,7 @@ const polygon4 = [_]Point{
     .{ .x = 466, .y = 180 },
 };
 
-// --- Poligono 5: agujero dentro del poligono 4, no se pinta ---
+//  Poligono 5: agujero dentro del poligono 4, no se pinta 
 const polygon5_hole = [_]Point{
     .{ .x = 682, .y = 175 },
     .{ .x = 708, .y = 120 },

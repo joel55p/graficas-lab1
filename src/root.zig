@@ -16,3 +16,7 @@ pub fn add(a: i32, b: i32) i32 {
 test "basic add functionality" {
     try std.testing.expect(add(3, 7) == 10);
 }
+
+
+
+//realmente pues este archivo se puede borrar ya que lo genere cuando hice el zig init, el tema es que si lo borro tendria que modificar el build pero ya funciona todo por lo que lo voy a dejar y es indiferente ya que si funciona todo.
